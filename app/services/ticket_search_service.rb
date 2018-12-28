@@ -36,7 +36,7 @@ class TicketSearchService
   end
 
   def dump_data(routes)
-    routes.inject([]) do |results, route|
+    routes.reduce([]) do |results, route|
       arr = route.split('|')
       results << {
         train_no: arr[3],

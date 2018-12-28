@@ -1,0 +1,121 @@
+AllCops:
+  TargetRubyVersion: 2.5.1
+  TargetRailsVersion: 5.2
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  Exclude:
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'bin/**/*'
+    - 'generator_templates/**/*'
+
+Rails:
+  Enabled: true
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/InverseOf:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# Styles
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Style/RedundantFreeze:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+Style/RedundantBegin:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/BracesAroundHashParameters:
+  Enabled: false
+
+Style/CollectionMethods:
+  Enabled: true
+  PreferredMethods:
+    find: detect
+    inject: reduce
+    collect: map
+    find_all: select
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Style/TrailingMethodEndStatement:
+  Enabled: false
+
+Style/RedundantReturn:
+  Enabled: false
+
+# Metrics
+Metrics/LineLength:
+  Max: 140
+
+Metrics/ClassLength:
+  Max: 200
+
+Metrics/MethodLength:
+  Max: 43
+
+Metrics/AbcSize:
+  Max: 51
+
+Metrics/BlockLength:
+  Max: 300
+
+Metrics/PerceivedComplexity:
+  Max: 15
+Metrics/ModuleLength:
+  Max: 120
+
+# Names
+Naming/ClassAndModuleCamelCase:
+  Enabled: false
