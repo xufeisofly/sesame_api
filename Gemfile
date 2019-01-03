@@ -13,6 +13,7 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
+gem 'actionpack-action_caching'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

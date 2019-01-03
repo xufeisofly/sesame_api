@@ -5,8 +5,8 @@ require 'net/http'
 require 'cacheable'
 
 class TicketSearchService
-  extend Cacheable
   attr_reader :from_code, :to_code, :date
+  PROXY_IPPOOL_KEY = 'ippoolkey'
 
   def initialize(route)
     @from_code = convert_to_code route.from
