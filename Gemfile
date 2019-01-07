@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'actionpack-action_caching'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'faraday'
@@ -13,7 +14,6 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
-gem 'actionpack-action_caching'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
