@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_07_051331) do
+ActiveRecord::Schema.define(version: 2019_01_07_140433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_01_07_051331) do
     t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id", "tag_id"], name: "index_city_tag_relations_on_city_id_and_tag_id", unique: true
     t.index ["city_id"], name: "index_city_tag_relations_on_city_id"
     t.index ["tag_id"], name: "index_city_tag_relations_on_tag_id"
   end
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_01_07_051331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["end_id"], name: "index_tickets_on_end_id"
+    t.index ["start_id", "end_id", "train_no"], name: "index_tickets_on_start_id_and_end_id_and_train_no", unique: true
     t.index ["start_id"], name: "index_tickets_on_start_id"
   end
 
