@@ -14,6 +14,7 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
+gem 'sidekiq'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
@@ -26,6 +27,7 @@ end
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'mina'
+  gem 'mina-sidekiq'
   gem 'pry-rails'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
