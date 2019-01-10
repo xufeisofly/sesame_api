@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'yaml'
-
 stations = YAML.safe_load(File.read('./stations.yml')).inject(:merge)
 
 stations.each do |k, v|
