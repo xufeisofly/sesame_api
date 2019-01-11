@@ -2,4 +2,5 @@ cities = %w(北京 天津 上海 重庆 呼和浩特 乌鲁木齐 拉萨 银川 
 
 cities.each do |name|
   Tag.first.cities << City.find_by(name: name)
+  puts name
 end

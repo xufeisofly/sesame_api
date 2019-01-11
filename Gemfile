@@ -15,8 +15,6 @@ gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
-gem 'pry-byebug'
-gem 'listen', '>= 3.0.5', '< 3.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
