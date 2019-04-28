@@ -17,7 +17,7 @@ gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'kaminari'
-gem 'selenium-webdriver', '~> 2.53.4'
+gem 'selenium-webdriver', '~> 3.5.2'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
