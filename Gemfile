@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+# source 'https://rubygems.org'
+source 'https://gems.ruby-china.com'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
@@ -16,6 +17,7 @@ gem 'rails', '~> 5.2.0'
 gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'kaminari'
+gem 'selenium-webdriver', '~> 2.53.4'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
