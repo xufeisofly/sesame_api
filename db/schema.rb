@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_07_140433) do
+ActiveRecord::Schema.define(version: 2019_04_28_150916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,16 @@ ActiveRecord::Schema.define(version: 2019_01_07_140433) do
     t.index ["end_id"], name: "index_tickets_on_end_id"
     t.index ["start_id", "end_id", "train_no"], name: "index_tickets_on_start_id_and_end_id_and_train_no", unique: true
     t.index ["start_id"], name: "index_tickets_on_start_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.integer "start_city_id", comment: "出发城市 id"
+    t.integer "end_city_id", comment: "到达城市 id"
+    t.integer "duration_min", comment: "花费时间，单位 min"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["duration_min"], name: "index_trips_on_duration_min"
+    t.index ["start_city_id", "end_city_id"], name: "index_trips_on_start_city_id_and_end_city_id", unique: true
   end
 
 end
