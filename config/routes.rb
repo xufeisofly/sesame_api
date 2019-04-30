@@ -3,5 +3,6 @@
 Rails.application.routes.draw do
   scope '/sesame/api' do
     get 'tickets', to: 'tickets#index'
+    get 'trips', to: 'trips#index'
   end
 end
