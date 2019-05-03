@@ -171,6 +171,7 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     redis (4.1.0)
+    rmmseg-cpp-new (0.3.1)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -196,6 +197,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.4.0)
+    ruby-pinyin (0.5.0)
+      rmmseg-cpp-new (~> 0.3.1)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     rubyzip (1.2.2)
@@ -251,6 +254,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails
   rubocop
+  ruby-pinyin
   selenium-webdriver (~> 3.5.2)
   sidekiq
   spring

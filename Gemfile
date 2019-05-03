@@ -18,6 +18,7 @@ gem 'redis', '~> 4.0'
 gem 'sidekiq'
 gem 'kaminari'
 gem 'selenium-webdriver', '~> 3.5.2'
+gem 'ruby-pinyin'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
