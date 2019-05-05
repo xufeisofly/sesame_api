@@ -7,12 +7,12 @@ class City < ApplicationRecord
   has_many :end_tickets, class_name: 'Ticket', foreign_key: :end_id, dependent: :destroy
 
   HOT_CITIES_KEY = 'hot_cities_key'
-  HOT_CITIES_COUNT = 4
+  HOT_CITIES_COUNT = 16
 
   class << self
     def hot_cities
       names = Redis.current.zrevrange(HOT_CITIES_KEY, 0, -1)
-      self.where(name: names[0..HOT_CITIES_COUNT])
+      self.where(name: names[0..HOT_CITIES_COUNT-1])
     end
 
     def hot_city_append(str)
