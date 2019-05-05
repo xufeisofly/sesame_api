@@ -5,5 +5,4 @@ cities.each do |city|
   cap = pinyin.first.capitalize
 
   city.update pinyin: pinyin, cap: cap
-  puts city.name
 end
