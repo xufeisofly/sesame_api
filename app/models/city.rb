@@ -6,19 +6,17 @@ class City < ApplicationRecord
   has_many :start_tickets, class_name: 'Ticket', foreign_key: :start_id, dependent: :destroy
   has_many :end_tickets, class_name: 'Ticket', foreign_key: :end_id, dependent: :destroy
 
-  LIST_KEY = 'list_key'
+  HOT_CITIES_KEY = 'hot_cities_key'
+  HOT_CITIES_COUNT = 4
 
   class << self
-    def all_from_redis
-      Redis.current.get(LIST_KEY)
+    def hot_cities
+      names = Redis.current.zrevrange(HOT_CITIES_KEY, 0, -1)
+      self.where(name: names[0..HOT_CITIES_COUNT])
     end
 
-    def load_to_redis(str)
-      Redis.current.set(LIST_KEY, str)
-    end
-
-    def clear_redis
-      Redis.current.del(LIST_KEY)
+    def hot_city_append(str)
+      Redis.current.zincrby(HOT_CITIES_KEY, 1, str)
     end
   end
 end
