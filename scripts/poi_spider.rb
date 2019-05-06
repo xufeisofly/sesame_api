@@ -19,6 +19,7 @@ cities.each_with_index do |city, index|
 
   driver = Selenium::WebDriver.for :chrome, options: options
   driver.navigate.to url
+  sleep(1)
 
   wait = Selenium::WebDriver::Wait.new(:timeout => 20)
 
@@ -58,7 +59,6 @@ cities.each_with_index do |city, index|
   end
 
   puts "---->" + city.name
-  sleep(1)
 end
 
 
