@@ -29,7 +29,10 @@ cities.each_with_index do |city, index|
   end
 
   poi_eles = elements.select { |ele| ele.text == '景点' }
-  next unless poi_eles.any?
+  unless poi_eles.any?
+    driver.quit
+    next
+  end
   poi_url = poi_eles.first.attribute(:href)
 
   driver.navigate.to poi_url
