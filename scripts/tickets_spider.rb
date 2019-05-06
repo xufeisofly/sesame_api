@@ -38,20 +38,24 @@ def get_durations_in_mins(driver, url)
   mins
 end
 
-cities.combination(2).each do |start_name, end_name|
-  start_city = City.find_by(name: start_name)
-  end_city = City.find_by(name: end_name)
+begin
+  cities.combination(2).each do |start_name, end_name|
+    start_city = City.find_by(name: start_name)
+    end_city = City.find_by(name: end_name)
 
-  next if Trip.find_by(start_city_id: start_city.id, end_city_id: end_city.id).present?
-  url = base_url + "?fromStation=#{start_name}&toStation=#{end_name}&date=2019-05-05&drainage="
+    next if Trip.find_by(start_city_id: start_city.id, end_city_id: end_city.id).present?
+    url = base_url + "?fromStation=#{start_name}&toStation=#{end_name}&date=2019-05-05&drainage="
 
-  duration_mins = get_durations_in_mins(driver, url)
-  sleep(1)
-  puts "#{start_name}-#{end_name}: #{duration_mins.min}"
+    duration_mins = get_durations_in_mins(driver, url)
+    sleep(1)
+    puts "#{start_name}-#{end_name}: #{duration_mins.min}"
 
-  Trip.find_or_create_by(
-    start_city_id: start_city.id,
-    end_city_id: end_city.id,
-    duration_min: duration_mins.min
-  ) if duration_mins.min.present?
+    Trip.find_or_create_by(
+      start_city_id: start_city.id,
+      end_city_id: end_city.id,
+      duration_min: duration_mins.min
+    ) if duration_mins.min.present?
+  end
+ensure
+  driver.quit
 end
