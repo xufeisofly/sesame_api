@@ -39,7 +39,8 @@ def get_durations_in_mins(url, options)
   mins
 end
 
-cities.combination(2).each do |start_name, end_name|
+cities.combination(2).each.with_index do |start_name, end_name, index|
+  puts "#{index + 1}/#{cities.length * (cities.length - 1)}"
   start_city = City.find_by(name: start_name)
   end_city = City.find_by(name: end_name)
 
