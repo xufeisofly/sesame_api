@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_03_161428) do
+ActiveRecord::Schema.define(version: 2019_05_06_113917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2019_05_03_161428) do
     t.index ["city_id", "tag_id"], name: "index_city_tag_relations_on_city_id_and_tag_id", unique: true
     t.index ["city_id"], name: "index_city_tag_relations_on_city_id"
     t.index ["tag_id"], name: "index_city_tag_relations_on_tag_id"
+  end
+
+  create_table "pois", force: :cascade do |t|
+    t.string "cn_name"
+    t.string "artwork"
+    t.integer "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_pois_on_city_id"
   end
 
   create_table "tags", force: :cascade do |t|
