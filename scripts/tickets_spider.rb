@@ -31,8 +31,7 @@ def get_durations_in_mins(driver, url)
   end
 
   mins = durations.map do |duration|
-    txt = duration.text
-    ret = txt.split(/小时|分/)
+    ret = duration.split(/小时|分/)
     ret[-1].to_i + ret[-2].to_i * 60
   end
 
