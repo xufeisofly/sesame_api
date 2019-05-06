@@ -52,7 +52,7 @@ cities.each do |city|
   city = City.find_by name: city
 
   poi_names.each do |name|
-    city.pois.create(cn_name: name)
+    city.pois.find_or_create_by(cn_name: name)
   end
 
   puts city.name
