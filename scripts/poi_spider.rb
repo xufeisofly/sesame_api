@@ -47,10 +47,15 @@ cities.each do |city|
   end
 
   driver.quit
+  puts poi_names
+
+  city = City.find_by name: city
 
   poi_names.each do |name|
-    Poi.find_or_create_by(cn_name: name)
+    city.pois.create(cn_name: name)
   end
+
+  puts city.name
 end
 
 
