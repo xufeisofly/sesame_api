@@ -7,7 +7,8 @@ options.add_argument("--disable-dev-shm-usage")
 
 base_url = 'https://travel.qunar.com/search/all/'
 
-cities = City.all.pluck(:name)
+# cities = City.all.pluck(:name)
+cities = %w(北京 天津 上海 重庆 呼和浩特 乌鲁木齐 拉萨 银川 南宁 哈尔滨 长春 沈阳 石家庄 郑州 武汉 长沙 太原 济南 西安 南京 杭州 福州 广州 合肥 南昌 昆明 贵阳 兰州 西宁 海口 成都)
 
 cities.each do |city|
   url = base_url + city
@@ -35,12 +36,20 @@ cities.each do |city|
     driver.find_elements(:class, 'cn_tit')
   end
 
-  poi_names = elements.map { |ele| ele.text }
+  en_elements = wait.until do
+    driver.find_elements(:class, 'en_tit')
+  end
+
+  poi_names = elements.zip(en_elements).map do |ele, en_ele|
+    ret = ele.text
+    ret.slice! en_ele.text
+    ret
+  end
 
   driver.quit
 
   poi_names.each do |name|
-    Poi.find_or_create_by(name: name)
+    Poi.find_or_create_by(cn_name: name)
   end
 end
 

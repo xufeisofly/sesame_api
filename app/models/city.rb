@@ -5,6 +5,7 @@ class City < ApplicationRecord
   has_many :tags, through: :city_tag_relations
   has_many :start_tickets, class_name: 'Ticket', foreign_key: :start_id, dependent: :destroy
   has_many :end_tickets, class_name: 'Ticket', foreign_key: :end_id, dependent: :destroy
+  has_many :pois, dependent: :destroy
 
   HOT_CITIES_KEY = 'hot_cities_key'
   HOT_CITIES_COUNT = 16
