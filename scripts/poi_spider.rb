@@ -10,6 +10,8 @@ base_url = 'https://travel.qunar.com/search/all/'
 cities = City.all.pluck(:name)
 # cities = %w(北京 天津 上海 重庆 呼和浩特 乌鲁木齐 拉萨 银川 南宁 哈尔滨 长春 沈阳 石家庄 郑州 武汉 长沙 太原 济南 西安 南京 杭州 福州 广州 合肥 南昌 昆明 贵阳 兰州 西宁 海口 成都)
 
+driver = Selenium::WebDriver.for :chrome, options: options
+
 cities.each_with_index do |city, index|
   puts "#{index + 1}/#{cities.length}"
   url = base_url + city
@@ -17,7 +19,6 @@ cities.each_with_index do |city, index|
   city = City.find_by name: city
   next if city.pois.any?
 
-  driver = Selenium::WebDriver.for :chrome, options: options
   driver.navigate.to url
   sleep(1)
 
@@ -30,7 +31,6 @@ cities.each_with_index do |city, index|
 
   poi_eles = elements.select { |ele| ele.text == '景点' }
   unless poi_eles.any?
-    driver.quit
     next
   end
   poi_url = poi_eles.first.attribute(:href)
@@ -54,7 +54,6 @@ cities.each_with_index do |city, index|
     ret
   end
 
-  driver.quit
   puts poi_names
 
   poi_names.each do |name|
@@ -64,4 +63,4 @@ cities.each_with_index do |city, index|
   puts "---->" + city.name
 end
 
-
+driver.quit
