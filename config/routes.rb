@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     get 'trips', to: 'trips#index'
     get 'cities', to: 'cities#index'
     post 'add_hot', to: 'cities#add_hot'
+    get 'pois', to: 'pois#index'
   end
 end
