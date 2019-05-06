@@ -12,8 +12,10 @@ cities = City.all.pluck(:name)
 
 cities.each_with_index do |city, index|
   puts "#{index + 1}/#{cities.length}"
-  sleep(1)
   url = base_url + city
+
+  city = City.find_by name: city
+  next if city.pois.any?
 
   driver = Selenium::WebDriver.for :chrome, options: options
   driver.navigate.to url
@@ -51,13 +53,12 @@ cities.each_with_index do |city, index|
   driver.quit
   puts poi_names
 
-  city = City.find_by name: city
-
   poi_names.each do |name|
     city.pois.find_or_create_by(cn_name: name)
   end
 
   puts "---->" + city.name
+  sleep(1)
 end
 
 
