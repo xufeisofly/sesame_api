@@ -11,7 +11,7 @@ class TripsController < ApplicationController
       'start_city_id = ? AND duration_min < ?',
       start_city.id,
       duration_min
-    ).order(duration_min: :asc).page(offset + 1).per(100)
+    ).includes(:end_city).order('cities.poi_num DESC, duration_min ASC').page(offset + 1).per(100)
 
     render_collection_with_page(trips, {}, each_serializer: TripSerializer)
   end
