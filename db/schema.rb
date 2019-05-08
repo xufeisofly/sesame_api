@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_113917) do
+ActiveRecord::Schema.define(version: 2019_05_08_140615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,10 +23,14 @@ ActiveRecord::Schema.define(version: 2019_05_06_113917) do
     t.string "cap"
     t.string "py_cap"
     t.string "pinyin"
+    t.integer "poi_num", default: 0
+    t.integer "default_poi_id"
     t.index ["cap"], name: "index_cities_on_cap"
     t.index ["code"], name: "index_cities_on_code"
+    t.index ["default_poi_id"], name: "index_cities_on_default_poi_id"
     t.index ["name"], name: "index_cities_on_name"
     t.index ["pinyin"], name: "index_cities_on_pinyin"
+    t.index ["poi_num"], name: "index_cities_on_poi_num"
     t.index ["py_cap"], name: "index_cities_on_py_cap"
   end
 
