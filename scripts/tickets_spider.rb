@@ -41,8 +41,8 @@ end
 
 cities.permutation(2).to_a.each_with_index do |pair, index|
   puts "#{index + 1}/#{cities.length * (cities.length - 1)}"
-  next if Redis.current.sismember('tickets_spider', "#{start_name}-#{end_name}")
   start_name, end_name = pair[0], pair[1]
+  next if Redis.current.sismember('tickets_spider', "#{start_name}-#{end_name}")
   start_city = City.find_by(name: start_name)
   end_city = City.find_by(name: end_name)
 
