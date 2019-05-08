@@ -7,8 +7,8 @@ options.add_argument("--disable-dev-shm-usage")
 
 base_url = 'https://train.qunar.com/stationToStation.htm'
 
-cities = %w(北京 天津 上海 重庆 呼和浩特 乌鲁木齐 拉萨 银川 南宁 哈尔滨 长春 沈阳 石家庄 郑州 武汉 长沙 太原 济南 西安 南京 杭州 福州 广州 合肥 南昌 昆明 贵阳 兰州 西宁 海口 成都)
-# cities = City.all.pluck(:name)
+# cities = %w(北京 天津 上海 重庆 呼和浩特 乌鲁木齐 拉萨 银川 南宁 哈尔滨 长春 沈阳 石家庄 郑州 武汉 长沙 太原 济南 西安 南京 杭州 福州 广州 合肥 南昌 昆明 贵阳 兰州 西宁 海口 成都)
+cities = City.all.pluck(:name)
 
 def get_durations_in_mins(url, options)
   driver = Selenium::WebDriver.for :chrome, options: options
