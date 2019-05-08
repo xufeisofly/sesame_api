@@ -66,7 +66,7 @@ task :deploy do
     on :launch do
       in_path(fetch(:current_path)) do
         command %(mkdir -p tmp/)
-        # invoke :'sidekiq:restart'
+        invoke :'sidekiq:restart'
         command %(touch tmp/restart.txt)
       end
     end
